@@ -1,0 +1,32 @@
+@page
+@model DetailsModel
+@{
+    ViewData["Title"] = "Подробности рейса";
+}
+
+<div class="container py-4">
+    <div class="row justify-content-center">
+        <div class="col-12 col-md-8 col-lg-6">
+            <div class="card shadow-sm rounded-4">
+                <div class="card-body p-4">
+                    <h1 class="fw-bold mb-4">Рейс @Model.Flight!.Number</h1>
+
+                    <ul class="list-group list-group-flush mb-4">
+                        <li class="list-group-item"><strong>ID:</strong> @Model.Flight.Id</li>
+                        <li class="list-group-item"><strong>Номер:</strong> @Model.Flight.Number</li>
+                        <li class="list-group-item"><strong>Откуда:</strong> @Model.Flight.From</li>
+                        <li class="list-group-item"><strong>Куда:</strong> @Model.Flight.To</li>
+                        <li class="list-group-item"><strong>Цена:</strong> @Model.Flight.Price руб.</li>
+                        <li class="list-group-item">
+                            <strong>Статус:</strong>
+                            @(Model.Flight.IsAvailable ? "Доступен" : "Недоступен")
+                        </li>
+                    </ul>
+
+                    <a asp-page="./Index" class="btn btn-outline-secondary">Назад к списку</a>
+                                        <a asp-page="./Delete" asp-route-id="@Model.Flight.Id" class="btn btn-outline-danger">Удалить</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
